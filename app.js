@@ -1,0 +1,557 @@
+/**
+ * Tech Startup Homepage JavaScript
+ * Handles mobile navigation, smooth scrolling, form validation, and interactions
+ * Prepared for future React.js conversion
+ */
+
+/**
+ * DOM Content Loaded Event Handler
+ * Initializes all functionality when the DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all modules
+    Navigation.init();
+    SmoothScrolling.init();
+    ContactForm.init();
+    ScrollEffects.init();
+    
+    console.log('Homepage initialized successfully');
+});
+
+/**
+ * Navigation Module
+ * Handles mobile menu toggle and navigation interactions
+ */
+const Navigation = {
+    /**
+     * Initialize navigation functionality
+     */
+    init() {
+        this.bindEvents();
+        this.handleActiveNavigation();
+    },
+
+    /**
+     * Bind navigation event listeners
+     */
+    bindEvents() {
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav__link');
+
+        // Mobile menu toggle
+        if (navToggle) {
+            navToggle.addEventListener('click', () => this.toggleMobileMenu());
+        }
+
+        // Mobile menu close
+        if (navClose) {
+            navClose.addEventListener('click', () => this.closeMobileMenu());
+        }
+
+        // Close menu when clicking on nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => this.closeMobileMenu());
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                this.closeMobileMenu();
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeMobileMenu();
+            }
+        });
+    },
+
+    /**
+     * Toggle mobile menu visibility
+     */
+    toggleMobileMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        if (navMenu) {
+            navMenu.classList.toggle('show-menu');
+            this.toggleBodyScroll();
+        }
+    },
+
+    /**
+     * Close mobile menu
+     */
+    closeMobileMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        if (navMenu && navMenu.classList.contains('show-menu')) {
+            navMenu.classList.remove('show-menu');
+            this.enableBodyScroll();
+        }
+    },
+
+    /**
+     * Handle active navigation highlighting
+     */
+    handleActiveNavigation() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav__link');
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('nav__link--active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('nav__link--active');
+                        }
+                    });
+                }
+            });
+        });
+    },
+
+    /**
+     * Toggle body scroll (prevent background scrolling when menu is open)
+     */
+    toggleBodyScroll() {
+        document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+    },
+
+    /**
+     * Enable body scroll
+     */
+    enableBodyScroll() {
+        document.body.style.overflow = '';
+    }
+};
+
+/**
+ * Smooth Scrolling Module
+ * Handles smooth scrolling to anchor links
+ */
+const SmoothScrolling = {
+    /**
+     * Initialize smooth scrolling
+     */
+    init() {
+        this.bindEvents();
+    },
+
+    /**
+     * Bind smooth scrolling events
+     */
+    bindEvents() {
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        
+        anchorLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement && href !== '#') {
+                    e.preventDefault();
+                    this.scrollToElement(targetElement);
+                }
+            });
+        });
+    },
+
+    /**
+     * Scroll to a specific element with offset for fixed header
+     * @param {HTMLElement} element - Target element to scroll to
+     */
+    scrollToElement(element) {
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
+        const targetPosition = element.offsetTop - headerHeight;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+
+/**
+ * Contact Form Module
+ * Handles form validation and submission
+ */
+const ContactForm = {
+    /**
+     * Initialize contact form functionality
+     */
+    init() {
+        this.form = document.getElementById('contact-form');
+        if (this.form) {
+            this.bindEvents();
+        }
+    },
+
+    /**
+     * Bind form event listeners
+     */
+    bindEvents() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        // Real-time validation
+        const inputs = this.form.querySelectorAll('.form__input, .form__textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+    },
+
+    /**
+     * Handle form submission
+     * @param {Event} e - Submit event
+     */
+    async handleSubmit(e) {
+        e.preventDefault();
+
+        if (!this.validateForm()) {
+            return;
+        }
+
+        const submitButton = this.form.querySelector('button[type="submit"]');
+        const formData = new FormData(this.form);
+        
+        try {
+            this.setLoadingState(submitButton, true);
+            
+            // Simulate API call (replace with actual endpoint)
+            await this.simulateFormSubmission(formData);
+            
+            this.showSuccessMessage();
+            this.resetForm();
+        } catch (error) {
+            this.showErrorMessage('Failed to send message. Please try again.');
+            console.error('Form submission error:', error);
+        } finally {
+            this.setLoadingState(submitButton, false);
+        }
+    },
+
+    /**
+     * Validate entire form
+     * @returns {boolean} - Form validity
+     */
+    validateForm() {
+        const inputs = this.form.querySelectorAll('.form__input, .form__textarea');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!this.validateField(input)) {
+                isValid = false;
+            }
+        });
+
+        return isValid;
+    },
+
+    /**
+     * Validate individual field
+     * @param {HTMLElement} field - Input field to validate
+     * @returns {boolean} - Field validity
+     */
+    validateField(field) {
+        const value = field.value.trim();
+        const fieldType = field.type;
+        const isRequired = field.hasAttribute('required');
+        
+        // Clear previous errors
+        this.clearFieldError(field);
+
+        // Required field validation
+        if (isRequired && !value) {
+            this.showFieldError(field, 'This field is required');
+            return false;
+        }
+
+        // Email validation
+        if (fieldType === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                this.showFieldError(field, 'Please enter a valid email address');
+                return false;
+            }
+        }
+
+        // Name validation (no numbers)
+        if (field.name === 'name' && value) {
+            const nameRegex = /^[a-zA-Z\s]+$/;
+            if (!nameRegex.test(value)) {
+                this.showFieldError(field, 'Name should only contain letters and spaces');
+                return false;
+            }
+        }
+
+        // Message minimum length
+        if (field.name === 'message' && value && value.length < 10) {
+            this.showFieldError(field, 'Message should be at least 10 characters long');
+            return false;
+        }
+
+        return true;
+    },
+
+    /**
+     * Show field validation error
+     * @param {HTMLElement} field - Input field
+     * @param {string} message - Error message
+     */
+    showFieldError(field, message) {
+        field.classList.add('error');
+        
+        // Remove existing error message
+        const existingError = field.parentNode.querySelector('.form__error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+
+        // Add error message
+        const errorElement = document.createElement('span');
+        errorElement.className = 'form__error-message';
+        errorElement.textContent = message;
+        field.parentNode.appendChild(errorElement);
+    },
+
+    /**
+     * Clear field validation error
+     * @param {HTMLElement} field - Input field
+     */
+    clearFieldError(field) {
+        field.classList.remove('error');
+        const errorElement = field.parentNode.querySelector('.form__error-message');
+        if (errorElement) {
+            errorElement.remove();
+        }
+    },
+
+    /**
+     * Set button loading state
+     * @param {HTMLElement} button - Submit button
+     * @param {boolean} loading - Loading state
+     */
+    setLoadingState(button, loading) {
+        if (loading) {
+            button.classList.add('loading');
+            button.textContent = 'Sending...';
+            button.disabled = true;
+        } else {
+            button.classList.remove('loading');
+            button.textContent = 'Send Message';
+            button.disabled = false;
+        }
+    },
+
+    /**
+     * Simulate form submission (replace with actual API call)
+     * @param {FormData} formData - Form data
+     * @returns {Promise} - Promise that resolves after delay
+     */
+    simulateFormSubmission(formData) {
+        return new Promise((resolve, reject) => {
+            // Simulate network delay
+            setTimeout(() => {
+                // For demo purposes, always resolve
+                // In real implementation, make actual API call here
+                console.log('Form data:', Object.fromEntries(formData));
+                resolve();
+            }, 2000);
+        });
+    },
+
+    /**
+     * Show success message
+     */
+    showSuccessMessage() {
+        const message = document.createElement('div');
+        message.className = 'form__success-message';
+        message.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+        message.style.cssText = `
+            background: var(--success);
+            color: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-md);
+            text-align: center;
+        `;
+        
+        this.form.appendChild(message);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            if (message.parentNode) {
+                message.parentNode.removeChild(message);
+            }
+        }, 5000);
+    },
+
+    /**
+     * Show error message
+     * @param {string} text - Error message text
+     */
+    showErrorMessage(text) {
+        const message = document.createElement('div');
+        message.className = 'form__error-message';
+        message.textContent = text;
+        message.style.cssText = `
+            background: var(--error);
+            color: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-md);
+            text-align: center;
+        `;
+        
+        this.form.appendChild(message);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            if (message.parentNode) {
+                message.parentNode.removeChild(message);
+            }
+        }, 5000);
+    },
+
+    /**
+     * Reset form to initial state
+     */
+    resetForm() {
+        this.form.reset();
+        
+        // Clear any remaining error states
+        const inputs = this.form.querySelectorAll('.form__input, .form__textarea');
+        inputs.forEach(input => this.clearFieldError(input));
+    }
+};
+
+/**
+ * Scroll Effects Module
+ * Handles scroll-based animations and effects
+ */
+const ScrollEffects = {
+    /**
+     * Initialize scroll effects
+     */
+    init() {
+        this.handleHeaderScroll();
+        this.initializeIntersectionObserver();
+    },
+
+    /**
+     * Handle header background change on scroll
+     */
+    handleHeaderScroll() {
+        const header = document.querySelector('.header');
+        if (!header) return;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 22, 40, 0.98)';
+                header.style.borderBottom = '1px solid rgba(0, 188, 212, 0.3)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(10, 22, 40, 0.95)';
+                header.style.borderBottom = '1px solid rgba(0, 188, 212, 0.2)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    },
+
+    /**
+     * Initialize Intersection Observer for animations
+     */
+    initializeIntersectionObserver() {
+        // Only animate if user prefers motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const animatedElements = document.querySelectorAll(
+            '.value-proposition__card, .testimonial, .team__member'
+        );
+
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    }
+};
+
+/**
+ * Utility Functions
+ */
+const Utils = {
+    /**
+     * Debounce function to limit function calls
+     * @param {Function} func - Function to debounce
+     * @param {number} wait - Wait time in milliseconds
+     * @returns {Function} - Debounced function
+     */
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+
+    /**
+     * Throttle function to limit function calls
+     * @param {Function} func - Function to throttle
+     * @param {number} limit - Time limit in milliseconds
+     * @returns {Function} - Throttled function
+     */
+    throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+};
+
+// Export modules for potential future use or testing
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        Navigation,
+        SmoothScrolling,
+        ContactForm,
+        ScrollEffects,
+        Utils
+    };
+}
