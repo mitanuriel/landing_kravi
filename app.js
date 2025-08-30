@@ -1,5 +1,6 @@
 /**
  * Tech Startup Homepage JavaScript
+git add .
  * Handles mobile navigation, smooth scrolling, form validation, modal, and interactions
  * Prepared for future React.js conversion
  */
@@ -8,14 +9,14 @@
  * DOM Content Loaded Event Handler
  * Initializes all functionality when the DOM is ready
  */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all modules
     Navigation.init();
     SmoothScrolling.init();
     ContactForm.init();
     ScrollEffects.init();
     Modal.init();
-    
+
     console.log('Homepage initialized successfully');
 });
 
@@ -152,7 +153,7 @@ const SmoothScrolling = {
      */
     bindEvents() {
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
-        
+
         anchorLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
@@ -202,7 +203,7 @@ const ContactForm = {
      */
     bindEvents() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        
+
         // Real-time validation
         const inputs = this.form.querySelectorAll('.form__input, .form__textarea');
         inputs.forEach(input => {
@@ -224,13 +225,13 @@ const ContactForm = {
 
         const submitButton = this.form.querySelector('button[type="submit"]');
         const formData = new FormData(this.form);
-        
+
         try {
             this.setLoadingState(submitButton, true);
-            
+
             // Simulate API call (replace with actual endpoint)
             await this.simulateFormSubmission(formData);
-            
+
             this.showSuccessMessage();
             this.resetForm();
         } catch (error) {
@@ -267,7 +268,7 @@ const ContactForm = {
         const value = field.value.trim();
         const fieldType = field.type;
         const isRequired = field.hasAttribute('required');
-        
+
         // Clear previous errors
         this.clearFieldError(field);
 
@@ -311,7 +312,7 @@ const ContactForm = {
      */
     showFieldError(field, message) {
         field.classList.add('error');
-        
+
         // Remove existing error message
         const existingError = field.parentNode.querySelector('.form__error-message');
         if (existingError) {
@@ -386,9 +387,9 @@ const ContactForm = {
             margin-top: var(--space-md);
             text-align: center;
         `;
-        
+
         this.form.appendChild(message);
-        
+
         // Remove message after 5 seconds
         setTimeout(() => {
             if (message.parentNode) {
@@ -413,9 +414,9 @@ const ContactForm = {
             margin-top: var(--space-md);
             text-align: center;
         `;
-        
+
         this.form.appendChild(message);
-        
+
         // Remove message after 5 seconds
         setTimeout(() => {
             if (message.parentNode) {
@@ -429,7 +430,7 @@ const ContactForm = {
      */
     resetForm() {
         this.form.reset();
-        
+
         // Clear any remaining error states
         const inputs = this.form.querySelectorAll('.form__input, .form__textarea');
         inputs.forEach(input => this.clearFieldError(input));
@@ -561,7 +562,7 @@ const Modal = {
         if (this.modal) {
             this.modal.classList.add('modal--active');
             document.body.style.overflow = 'hidden';
-            
+
             // Focus first input for accessibility
             const firstInput = this.modal.querySelector('.form__input');
             if (firstInput) {
@@ -619,7 +620,7 @@ const Utils = {
      */
     throttle(func, limit) {
         let inThrottle;
-        return function(...args) {
+        return function (...args) {
             if (!inThrottle) {
                 func.apply(this, args);
                 inThrottle = true;
