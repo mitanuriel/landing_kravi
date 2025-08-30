@@ -58,7 +58,7 @@
               <a href="#career" class="nav__link">Career</a>
             </li>
             <li class="nav__item">
-              <a href="#contact" class="nav__link">Contact</a>
+              <a href="contact.html" class="nav__link">Contact</a>
             </li>
           </ul>
 
@@ -100,7 +100,7 @@
           </p>
           <div class="hero__buttons">
             <a href="#future-technologies" class="btn btn--primary btn--hero">Explore Our Technologies</a>
-            <a href="#contact" class="btn btn--secondary btn--hero">Book a Meeting</a>
+            <a href="contact.html" class="btn btn--secondary btn--hero">Book a Meeting</a>
           </div>
         </div>
       </div>
@@ -343,57 +343,55 @@
         </div>
       </div>
     </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Get In Touch</h2>
-          <p class="section__description">
-            Ready to transform your business? Let's discuss how we can help you achieve your goals.
-          </p>
-        </div>
-
-        <div class="contact__content">
-          <div class="contact__info">
-            <div class="contact__item">
-              <div class="contact__icon">📍</div>
-              <div class="contact__details">
-                <h4>Address</h4>
-                <p>123 Tech Street, Innovation District<br>San Francisco, CA 94105</p>
-              </div>
-            </div>
-
-            <div class="contact__item">
-              <div class="contact__icon">📞</div>
-              <div class="contact__details">
-                <h4>Phone</h4>
-                <p>+1 (555) 123-4567</p>
-              </div>
-            </div>
-
-            <div class="contact__item">
-              <div class="contact__icon">📧</div>
-              <div class="contact__details">
-                <h4>Email</h4>
-                <p>hello@kravianalytics.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contact-modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <div class="modal__header">
+        <h2 class="modal__title">Contact Us</h2>
+        <button class="modal__close" id="modal-close">
+          <span class="modal__close-icon">×</span>
+        </button>
+      </div>
+      
+      <form class="contact-form" id="contact-form">
+        <div class="form__group">
+          <input type="text" class="form__input" id="subject" name="subject" placeholder="Subject" required>
+        </div>
+        
+        <div class="form__group">
+          <input type="text" class="form__input" id="name" name="name" placeholder="Your name" required>
+        </div>
+        
+        <div class="form__group">
+          <input type="email" class="form__input" id="email" name="email" placeholder="Your email" required>
+        </div>
+        
+        <div class="form__group">
+          <textarea class="form__textarea" id="message" name="message" placeholder="Your message..." rows="6" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer__content">
         <div class="footer__brand">
-          <h3 class="footer__logo">Kravi Analytics</h3>
+          <h3 class="footer__logo">KRAVI ANALYTICS</h3>
           <p class="footer__description">
-            Revolutionizing technology solutions for modern businesses.
+            Delivering solutions that turn untapped potential and challenges into thriving possibilities.
           </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">
+              <span class="social-icon">in</span>
+            </a>
+          </div>
         </div>
 
         <div class="footer__links">
@@ -401,31 +399,26 @@
             <h4 class="footer__title">Company</h4>
             <ul class="footer__list">
               <li><a href="#about" class="footer__link">About Us</a></li>
-              <li><a href="#services" class="footer__link">Services</a></li>
-              <li><a href="#contact" class="footer__link">Contact</a></li>
+              <li><a href="#career" class="footer__link">Careers</a></li>
+              <li><a href="contact.html" class="footer__link">Contact Us</a></li>
             </ul>
           </div>
 
           <div class="footer__column">
-            <h4 class="footer__title">Legal</h4>
-            <ul class="footer__list">
-              <li><a href="#privacy" class="footer__link">Privacy Policy</a></li>
-              <li><a href="#terms" class="footer__link">Terms of Service</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__column">
-            <h4 class="footer__title">Follow Us</h4>
-            <div class="footer__social">
-              <a href="#" class="footer__social-link" aria-label="LinkedIn">
-                <span class="social-icon">in</span>
-              </a>
-              <a href="#" class="footer__social-link" aria-label="Twitter">
-                <span class="social-icon">tw</span>
-              </a>
-              <a href="#" class="footer__social-link" aria-label="YouTube">
-                <span class="social-icon">yt</span>
-              </a>
+            <h4 class="footer__title">Contact</h4>
+            <div class="footer__contact">
+              <p class="footer__contact-item">
+                <span class="contact__icon">📧</span>
+                info@kravianalytics.com
+              </p>
+              <p class="footer__contact-item">
+                <span class="contact__icon">📞</span>
+                +1 (234) 567-890
+              </p>
+              <p class="footer__contact-item">
+                <span class="contact__icon">📍</span>
+                Norra Apparathallen, M-huset LTH, Ole Römers väg 1, 223 63 Lund, Sweden
+              </p>
             </div>
           </div>
         </div>

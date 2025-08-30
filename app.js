@@ -1,6 +1,6 @@
 /**
  * Tech Startup Homepage JavaScript
- * Handles mobile navigation, smooth scrolling, form validation, and interactions
+ * Handles mobile navigation, smooth scrolling, form validation, modal, and interactions
  * Prepared for future React.js conversion
  */
 
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     SmoothScrolling.init();
     ContactForm.init();
     ScrollEffects.init();
+    Modal.init();
     
     console.log('Homepage initialized successfully');
 });
@@ -506,6 +507,89 @@ const ScrollEffects = {
 };
 
 /**
+ * Modal Module
+ * Handles modal dialog functionality for contact form
+ */
+const Modal = {
+    /**
+     * Initialize modal functionality
+     */
+    init() {
+        this.modal = document.getElementById('contact-modal');
+        this.bindEvents();
+    },
+
+    /**
+     * Bind modal event listeners
+     */
+    bindEvents() {
+        // Contact links and buttons that should open the modal
+        const contactTriggers = document.querySelectorAll('a[href="#contact"], .btn[href="#contact"]');
+        const modalClose = document.getElementById('modal-close');
+        const modalOverlay = this.modal?.querySelector('.modal__overlay');
+
+        // Open modal when clicking contact triggers
+        contactTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openModal();
+            });
+        });
+
+        // Close modal when clicking close button
+        if (modalClose) {
+            modalClose.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal when clicking overlay
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isModalOpen()) {
+                this.closeModal();
+            }
+        });
+    },
+
+    /**
+     * Open modal
+     */
+    openModal() {
+        if (this.modal) {
+            this.modal.classList.add('modal--active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus first input for accessibility
+            const firstInput = this.modal.querySelector('.form__input');
+            if (firstInput) {
+                setTimeout(() => firstInput.focus(), 100);
+            }
+        }
+    },
+
+    /**
+     * Close modal
+     */
+    closeModal() {
+        if (this.modal) {
+            this.modal.classList.remove('modal--active');
+            document.body.style.overflow = '';
+        }
+    },
+
+    /**
+     * Check if modal is open
+     * @returns {boolean} - Modal open state
+     */
+    isModalOpen() {
+        return this.modal?.classList.contains('modal--active') || false;
+    }
+};
+
+/**
  * Utility Functions
  */
 const Utils = {
@@ -552,6 +636,7 @@ if (typeof module !== 'undefined' && module.exports) {
         SmoothScrolling,
         ContactForm,
         ScrollEffects,
+        Modal,
         Utils
     };
 }
