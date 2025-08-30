@@ -1116,7 +1116,7 @@ img {
   background: var (--white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
-  transition: all var(--transition);
+  transition: all var (--transition);
 }
 
 .career__benefit:hover {
@@ -1435,7 +1435,7 @@ img {
 .contact-page__form {
   background: var(--white);
   border-radius: var(--radius-xl);
-  padding: var(--space-3xl);
+  padding: var(--space-2xl) var(--space-2xl) var(--space-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
