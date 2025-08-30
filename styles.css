@@ -174,6 +174,38 @@ img {
   width: 100%;
 }
 
+/* Contact form button styling - matching hero button style */
+.btn--contact {
+  padding: var(--space-lg) var(--space-3xl);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 188, 212, 0.3);
+  transition: all var(--transition);
+  min-height: 56px;
+}
+
+.btn--contact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 188, 212, 0.4);
+}
+
+.contact-page .contact-form .btn--contact {
+  background: var(--primary);
+  color: var(--white);
+  border: 2px solid var(--primary);
+}
+
+.contact-page .contact-form .btn--contact:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 188, 212, 0.4);
+}
+
 /* ==========================================================================
    HEADER & NAVIGATION
    ========================================================================== */
@@ -636,7 +668,7 @@ img {
   font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--gray-900);
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var (--space-2xl);
   text-align: center;
 }
 
