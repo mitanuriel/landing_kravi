@@ -1,0 +1,22 @@
+{
+  "name": "kravi-analytics-landing",
+  "version": "1.0.0",
+  "description": "Kravi Analytics Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
+  }
+}
