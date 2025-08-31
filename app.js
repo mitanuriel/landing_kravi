@@ -1,6 +1,5 @@
 /**
  * Tech Startup Homepage JavaScript
-git add .
  * Handles mobile navigation, smooth scrolling, form validation, modal, and interactions
  * Prepared for future React.js conversion
  */
@@ -16,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ContactForm.init();
     ScrollEffects.init();
     Modal.init();
+    CardFlip.init();
 
     console.log('Homepage initialized successfully');
 });
@@ -591,6 +591,147 @@ const Modal = {
 };
 
 /**
+ * Card Flip Module
+ * Handles flip card functionality for Future Technologies section
+ */
+const CardFlip = {
+    /**
+     * Initialize card flip functionality
+     */
+    init() {
+        this.bindEvents();
+        this.setupAccessibility();
+    },
+
+    /**
+     * Bind flip card event listeners
+     */
+    bindEvents() {
+        const cardContainers = document.querySelectorAll('.technology__card-container');
+        
+        cardContainers.forEach(container => {
+            // Add click functionality for mobile devices
+            container.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.toggleFlip(container);
+                }
+            });
+            
+            // Add keyboard accessibility
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleFlip(container);
+                }
+            });
+
+            // Touch event for better mobile experience
+            container.addEventListener('touchstart', (e) => {
+                if (window.innerWidth <= 768) {
+                    // Add a small delay to distinguish from scroll
+                    this.touchStartTime = Date.now();
+                }
+            });
+
+            container.addEventListener('touchend', (e) => {
+                if (window.innerWidth <= 768) {
+                    const touchDuration = Date.now() - this.touchStartTime;
+                    if (touchDuration < 200) { // Quick tap
+                        e.preventDefault();
+                        this.toggleFlip(container);
+                    }
+                }
+            });
+        });
+    },
+
+    /**
+     * Toggle flip state for a card container
+     * @param {HTMLElement} container - Card container element
+     */
+    toggleFlip(container) {
+        container.classList.toggle('flipped');
+        
+        // Update ARIA state for accessibility
+        const isFlipped = container.classList.contains('flipped');
+        container.setAttribute('aria-pressed', isFlipped);
+        
+        // Announce the flip to screen readers
+        const frontCard = container.querySelector('.technology__card--front .technology__title');
+        const backCard = container.querySelector('.technology__card--back .value-proposition__title');
+        
+        if (frontCard && backCard) {
+            const announcement = isFlipped 
+                ? `Showing ${backCard.textContent}`
+                : `Showing ${frontCard.textContent}`;
+            
+            this.announceToScreenReader(announcement);
+        }
+    },
+
+    /**
+     * Setup accessibility attributes
+     */
+    setupAccessibility() {
+        const cardContainers = document.querySelectorAll('.technology__card-container');
+        
+        cardContainers.forEach((container, index) => {
+            // Make container focusable and interactive
+            container.setAttribute('tabindex', '0');
+            container.setAttribute('role', 'button');
+            container.setAttribute('aria-pressed', 'false');
+            
+            // Add descriptive label
+            const frontTitle = container.querySelector('.technology__card--front .technology__title');
+            const backTitle = container.querySelector('.technology__card--back .value-proposition__title');
+            
+            if (frontTitle && backTitle) {
+                const label = `Flip card: ${frontTitle.textContent} to reveal ${backTitle.textContent}`;
+                container.setAttribute('aria-label', label);
+            }
+            
+            // Add unique IDs for better accessibility
+            container.id = `flip-card-${index + 1}`;
+        });
+    },
+
+    /**
+     * Announce text to screen readers
+     * @param {string} text - Text to announce
+     */
+    announceToScreenReader(text) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.style.width = '1px';
+        announcement.style.height = '1px';
+        announcement.style.overflow = 'hidden';
+        
+        document.body.appendChild(announcement);
+        announcement.textContent = text;
+        
+        // Remove after announcement
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    },
+
+    /**
+     * Reset all cards to front side
+     */
+    resetAllCards() {
+        const cardContainers = document.querySelectorAll('.technology__card-container');
+        cardContainers.forEach(container => {
+            container.classList.remove('flipped');
+            container.setAttribute('aria-pressed', 'false');
+        });
+    }
+};
+
+/**
  * Utility Functions
  */
 const Utils = {
@@ -638,6 +779,7 @@ if (typeof module !== 'undefined' && module.exports) {
         ContactForm,
         ScrollEffects,
         Modal,
+        CardFlip,
         Utils
     };
 }
