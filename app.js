@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ScrollEffects.init();
     Modal.init();
     CardFlip.init();
+    initializeTabs();
 
     console.log('Homepage initialized successfully');
 });
@@ -730,6 +731,28 @@ const CardFlip = {
         });
     }
 };
+
+/**
+ * Tab functionality for About section
+ */
+function initializeTabs() {
+  const tabButtons = document.querySelectorAll('.tab__button');
+  const tabPanels = document.querySelectorAll('.tab__panel');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetTab = button.getAttribute('data-tab');
+      
+      // Remove active class from all buttons and panels
+      tabButtons.forEach(btn => btn.classList.remove('tab__button--active'));
+      tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
+      
+      // Add active class to clicked button and corresponding panel
+      button.classList.add('tab__button--active');
+      document.getElementById(targetTab).classList.add('tab__panel--active');
+    });
+  });
+}
 
 /**
  * Utility Functions
