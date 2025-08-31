@@ -609,7 +609,7 @@ const CardFlip = {
      */
     bindEvents() {
         const cardContainers = document.querySelectorAll('.technology__card-container');
-        
+
         cardContainers.forEach(container => {
             // Add click functionality for mobile devices
             container.addEventListener('click', (e) => {
@@ -618,7 +618,7 @@ const CardFlip = {
                     this.toggleFlip(container);
                 }
             });
-            
+
             // Add keyboard accessibility
             container.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -653,20 +653,20 @@ const CardFlip = {
      */
     toggleFlip(container) {
         container.classList.toggle('flipped');
-        
+
         // Update ARIA state for accessibility
         const isFlipped = container.classList.contains('flipped');
         container.setAttribute('aria-pressed', isFlipped);
-        
+
         // Announce the flip to screen readers
         const frontCard = container.querySelector('.technology__card--front .technology__title');
         const backCard = container.querySelector('.technology__card--back .value-proposition__title');
-        
+
         if (frontCard && backCard) {
-            const announcement = isFlipped 
+            const announcement = isFlipped
                 ? `Showing ${backCard.textContent}`
                 : `Showing ${frontCard.textContent}`;
-            
+
             this.announceToScreenReader(announcement);
         }
     },
@@ -676,22 +676,22 @@ const CardFlip = {
      */
     setupAccessibility() {
         const cardContainers = document.querySelectorAll('.technology__card-container');
-        
+
         cardContainers.forEach((container, index) => {
             // Make container focusable and interactive
             container.setAttribute('tabindex', '0');
             container.setAttribute('role', 'button');
             container.setAttribute('aria-pressed', 'false');
-            
+
             // Add descriptive label
             const frontTitle = container.querySelector('.technology__card--front .technology__title');
             const backTitle = container.querySelector('.technology__card--back .value-proposition__title');
-            
+
             if (frontTitle && backTitle) {
                 const label = `Flip card: ${frontTitle.textContent} to reveal ${backTitle.textContent}`;
                 container.setAttribute('aria-label', label);
             }
-            
+
             // Add unique IDs for better accessibility
             container.id = `flip-card-${index + 1}`;
         });
@@ -710,10 +710,10 @@ const CardFlip = {
         announcement.style.width = '1px';
         announcement.style.height = '1px';
         announcement.style.overflow = 'hidden';
-        
+
         document.body.appendChild(announcement);
         announcement.textContent = text;
-        
+
         // Remove after announcement
         setTimeout(() => {
             document.body.removeChild(announcement);
@@ -736,22 +736,22 @@ const CardFlip = {
  * Tab functionality for About section
  */
 function initializeTabs() {
-  const tabButtons = document.querySelectorAll('.tab__button');
-  const tabPanels = document.querySelectorAll('.tab__panel');
+    const tabButtons = document.querySelectorAll('.tab__button');
+    const tabPanels = document.querySelectorAll('.tab__panel');
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetTab = button.getAttribute('data-tab');
-      
-      // Remove active class from all buttons and panels
-      tabButtons.forEach(btn => btn.classList.remove('tab__button--active'));
-      tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
-      
-      // Add active class to clicked button and corresponding panel
-      button.classList.add('tab__button--active');
-      document.getElementById(targetTab).classList.add('tab__panel--active');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('tab__button--active'));
+            tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
+
+            // Add active class to clicked button and corresponding panel
+            button.classList.add('tab__button--active');
+            document.getElementById(targetTab).classList.add('tab__panel--active');
+        });
     });
-  });
 }
 
 /**
