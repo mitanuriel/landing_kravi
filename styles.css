@@ -1394,6 +1394,28 @@ img {
   }
 }
 
+/* Downloaded Icon Styling */
+.tech-icon-svg {
+  filter: brightness(0) invert(1); /* Makes any color icon white */
+  transition: all var(--transition);
+}
+
+.technology__card--front:hover .tech-icon-svg {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* For JPG/PNG icons */
+.tech-icon-img {
+  filter: brightness(0) invert(1);
+  border-radius: 4px;
+  transition: all var(--transition);
+}
+
+.technology__card--front:hover .tech-icon-img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  transform: scale(1.05);
+}
+
 /* ==========================================================================
    CAREER SECTION
    ========================================================================== */
