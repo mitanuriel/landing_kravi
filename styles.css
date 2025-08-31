@@ -693,7 +693,7 @@ img {
   justify-content: center;
   margin: 0 auto var(--space-lg);
   border: 4px solid var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
   overflow: hidden;
 }
 
