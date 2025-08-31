@@ -24,10 +24,10 @@ Object.defineProperty(window, 'scrollTo', {
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  constructor() { }
+  observe() { }
+  unobserve() { }
+  disconnect() { }
 };
 
 // Mock matchMedia for responsive design tests

@@ -52,7 +52,7 @@ describe('ContactForm - User Story 6', () => {
     const emailField = document.querySelector('#email');
     const messageField = document.querySelector('#message');
     const subjectField = document.querySelector('#subject');
-    
+
     expect(nameField).toBeTruthy();
     expect(emailField).toBeTruthy();
     expect(messageField).toBeTruthy();
@@ -63,10 +63,10 @@ describe('ContactForm - User Story 6', () => {
     // AC: Multiple contact options (email, phone, social media)
     const emailContact = document.querySelector('.footer__contact-item');
     const phoneContact = document.querySelectorAll('.footer__contact-item')[1];
-    
+
     expect(emailContact).toBeTruthy();
     expect(phoneContact).toBeTruthy();
-    
+
     // Check for email and phone in content
     const footerText = document.querySelector('.footer__contact').textContent;
     expect(footerText).toMatch(/email|@/);
@@ -77,14 +77,14 @@ describe('ContactForm - User Story 6', () => {
     // AC: Form validation with helpful error messages
     const requiredFields = document.querySelectorAll('[required]');
     const emailField = document.querySelector('input[type="email"]');
-    
+
     expect(requiredFields.length).toBeGreaterThan(0);
     expect(emailField).toBeTruthy();
   });
 
   test('submit button is present and properly labeled', () => {
     const submitButton = document.querySelector('button[type="submit"]');
-    
+
     expect(submitButton).toBeTruthy();
     expect(submitButton.textContent).toMatch(/send|submit/i);
   });
@@ -92,10 +92,10 @@ describe('ContactForm - User Story 6', () => {
   test('form has proper structure for accessibility', () => {
     const form = document.querySelector('form');
     const inputs = document.querySelectorAll('input, textarea');
-    
+
     expect(form).toBeTruthy();
     expect(inputs.length).toBeGreaterThan(0);
-    
+
     // Check that form fields have proper attributes
     inputs.forEach(input => {
       expect(input.name).toBeTruthy();

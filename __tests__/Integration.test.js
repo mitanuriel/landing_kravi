@@ -80,7 +80,7 @@ describe('Integration Tests', () => {
         <meta name="keywords" content="kravi analytics, ocean surveillance">
         <title>Kravi Analytics - Revolutionize Ocean Surveillance</title>
       `;
-      
+
       document.body.innerHTML = `
         <header><nav role="navigation"></nav></header>
         <main role="main">

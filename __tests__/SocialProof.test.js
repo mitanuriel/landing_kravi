@@ -39,7 +39,7 @@ describe('SocialProof - User Story 4', () => {
     // AC: Shows client logos or "trusted by" section
     const clientLogos = document.querySelectorAll('.client-logo');
     const trustedBySection = document.querySelector('.client-logos');
-    
+
     // This will fail because these don't exist in actual site
     expect(trustedBySection || clientLogos.length > 0).toBeFalsy(); // Expecting failure
   });
@@ -47,7 +47,7 @@ describe('SocialProof - User Story 4', () => {
   test('includes specific metrics or achievements', () => {
     // AC: Includes specific metrics or achievements if available
     const metrics = document.querySelectorAll('.metric, .achievement, .stat');
-    
+
     // This will fail because metrics don't exist in actual site
     expect(metrics.length).toBe(0); // Expecting no metrics currently
   });
@@ -55,11 +55,11 @@ describe('SocialProof - User Story 4', () => {
   test('testimonials include customer names and companies', () => {
     // AC: Testimonials include customer names and companies (when possible)
     const testimonials = document.querySelectorAll('.testimonial');
-    
+
     testimonials.forEach(testimonial => {
       const name = testimonial.querySelector('.testimonial__name');
       const company = testimonial.querySelector('.testimonial__company');
-      
+
       if (testimonial) {
         expect(name).toBeTruthy();
         expect(company).toBeTruthy();
@@ -70,7 +70,7 @@ describe('SocialProof - User Story 4', () => {
   test('social proof section is missing from actual site', () => {
     // Reset DOM to actual site structure
     document.body.innerHTML = `<div>No social proof section exists</div>`;
-    
+
     const socialProofSection = document.querySelector('.social-proof, .testimonials, .client-logos');
     expect(socialProofSection).toBeFalsy();
   });

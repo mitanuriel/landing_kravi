@@ -66,12 +66,12 @@ describe('ValueProposition - User Story 3', () => {
   test('each benefit has icon, title, and description', () => {
     // AC: Each benefit has an icon, title, and brief description
     const cards = document.querySelectorAll('.value-proposition__card');
-    
+
     cards.forEach(card => {
       const icon = card.querySelector('.value-proposition__icon');
       const title = card.querySelector('.value-proposition__title');
       const description = card.querySelector('.value-proposition__description');
-      
+
       expect(icon).toBeTruthy();
       expect(title).toBeTruthy();
       expect(description).toBeTruthy();
@@ -84,7 +84,7 @@ describe('ValueProposition - User Story 3', () => {
     // AC: Content is scannable and easy to digest
     const grid = document.querySelector('.value-proposition__grid');
     const header = document.querySelector('.section__header');
-    
+
     expect(grid).toBeTruthy();
     expect(header).toBeTruthy();
   });
@@ -93,7 +93,7 @@ describe('ValueProposition - User Story 3', () => {
     // AC: Benefits are customer-focused (not feature-focused)
     const titles = document.querySelectorAll('.value-proposition__title');
     const descriptions = document.querySelectorAll('.value-proposition__description');
-    
+
     // Check that content focuses on benefits rather than technical features
     let customerFocusedCount = 0;
     descriptions.forEach(desc => {
@@ -102,7 +102,7 @@ describe('ValueProposition - User Story 3', () => {
         customerFocusedCount++;
       }
     });
-    
+
     expect(customerFocusedCount).toBeGreaterThan(0);
   });
 
@@ -110,10 +110,10 @@ describe('ValueProposition - User Story 3', () => {
     // AC: Section is visually appealing with consistent styling
     const section = document.querySelector('.value-proposition');
     const cards = document.querySelectorAll('.value-proposition__card');
-    
+
     expect(section).toBeTruthy();
     expect(cards.length).toBeGreaterThan(0);
-    
+
     // Check that all cards have consistent structure
     cards.forEach(card => {
       expect(card.classList.contains('value-proposition__card')).toBe(true);

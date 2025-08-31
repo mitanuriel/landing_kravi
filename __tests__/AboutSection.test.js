@@ -56,10 +56,10 @@ describe('AboutSection - User Story 5', () => {
     // AC: Brief company story or mission statement
     const aboutText = document.querySelector('.about__text');
     const descriptions = document.querySelectorAll('.about__description');
-    
+
     expect(aboutText).toBeTruthy();
     expect(descriptions.length).toBeGreaterThan(0);
-    
+
     // Check for mission-related content
     const textContent = aboutText.textContent.toLowerCase();
     expect(textContent).toMatch(/mission|vision|believe|founded/);
@@ -68,14 +68,14 @@ describe('AboutSection - User Story 5', () => {
   test('shows key team member photos and titles', () => {
     // AC: Key team member photos and titles
     const teamMembers = document.querySelectorAll('.team__member');
-    
+
     expect(teamMembers.length).toBeGreaterThan(0);
-    
+
     teamMembers.forEach(member => {
       const image = member.querySelector('.team__member-image, .team__member-placeholder');
       const name = member.querySelector('.team__member-name');
       const role = member.querySelector('.team__member-role');
-      
+
       expect(image).toBeTruthy();
       expect(name).toBeTruthy();
       expect(role).toBeTruthy();
@@ -87,11 +87,11 @@ describe('AboutSection - User Story 5', () => {
     const aboutSection = document.querySelector('.about');
     const teamTitle = document.querySelector('.about__team-title');
     const sectionTitle = document.querySelector('.section__title');
-    
+
     expect(aboutSection).toBeTruthy();
     expect(teamTitle).toBeTruthy();
     expect(sectionTitle).toBeTruthy();
-    
+
     // Check for professional language
     const content = aboutSection.textContent.toLowerCase();
     expect(content).toMatch(/experience|expertise|professional|team|innovation/);
@@ -101,14 +101,14 @@ describe('AboutSection - User Story 5', () => {
     // AC: Content builds trust and credibility
     const descriptions = document.querySelectorAll('.about__description');
     let credibilityIndicators = 0;
-    
+
     descriptions.forEach(desc => {
       const text = desc.textContent.toLowerCase();
       if (text.includes('experience') || text.includes('decades') || text.includes('founded')) {
         credibilityIndicators++;
       }
     });
-    
+
     expect(credibilityIndicators).toBeGreaterThan(0);
   });
 
@@ -116,7 +116,7 @@ describe('AboutSection - User Story 5', () => {
     const aboutSection = document.querySelector('section.about');
     const headings = document.querySelectorAll('h2, h3, h4');
     const teamGrid = document.querySelector('.team__grid');
-    
+
     expect(aboutSection).toBeTruthy();
     expect(headings.length).toBeGreaterThan(0);
     expect(teamGrid).toBeTruthy();

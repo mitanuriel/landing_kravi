@@ -48,7 +48,7 @@ describe('Navigation - User Story 2', () => {
     // AC: Navigation menu is visible and accessible on all devices
     const nav = document.querySelector('.nav');
     const navMenu = document.querySelector('.nav__menu');
-    
+
     expect(nav).toBeTruthy();
     expect(navMenu).toBeTruthy();
   });
@@ -59,7 +59,7 @@ describe('Navigation - User Story 2', () => {
     const aboutLink = document.querySelector('a[href="#about"]');
     const servicesLink = document.querySelector('a[href="#future-technologies"]');
     const contactLink = document.querySelector('a[href="contact.html"]');
-    
+
     expect(homeLink).toBeTruthy();
     expect(aboutLink).toBeTruthy();
     expect(servicesLink).toBeTruthy();
@@ -70,7 +70,7 @@ describe('Navigation - User Story 2', () => {
     // AC: Mobile navigation uses a hamburger menu
     const navToggle = document.querySelector('#nav-toggle');
     const navClose = document.querySelector('#nav-close');
-    
+
     expect(navToggle).toBeTruthy();
     expect(navClose).toBeTruthy();
   });
@@ -93,7 +93,7 @@ describe('Navigation - User Story 2', () => {
     const header = document.querySelector('header');
     const nav = document.querySelector('nav');
     const navList = document.querySelector('ul.nav__list');
-    
+
     expect(header).toBeTruthy();
     expect(nav).toBeTruthy();
     expect(navList).toBeTruthy();
