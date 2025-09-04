@@ -2779,6 +2779,23 @@ img {
   justify-content: center;
   border: 3px solid rgba(0, 188, 212, 0.5);
   box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
+  overflow: hidden;
+}
+
+/* Advisory Board Photo Styling - Circular without blue background */
+.advisory__member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+/* Override styles for advisory members with photos */
+.advisory__member-image:has(.advisory__member-photo) {
+  background: none;
+  border: 2px solid var(--gray-200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .advisory__member-placeholder {
@@ -2946,6 +2963,7 @@ img {
 
 /* Responsive Design for Partners */
 @media (max-width: 768px) {
+
   .partner__item,
   .partner__item--reverse {
     flex-direction: column;
