@@ -469,6 +469,17 @@
 
       <form class="contact-form" id="contact-form">
         <div class="form__group">
+          <select class="form__select" id="inquiry-type-modal" name="inquiry-type" required>
+            <option value="" disabled selected>Please choose an option</option>
+            <option value="collaboration">Collaboration</option>
+            <option value="demo">Book a Demo</option>
+            <option value="thesis">Thesis</option>
+            <option value="career">Career</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form__group">
           <input type="text" class="form__input" id="subject" name="subject" placeholder="Subject" required>
         </div>
 
