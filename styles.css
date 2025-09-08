@@ -2115,7 +2115,7 @@ img {
 
 .positions__list {
   display: grid;
-  gap: var (--space-xl);
+  gap: var(--space-lg);
 }
 
 .position__card {
@@ -2163,6 +2163,29 @@ img {
 .btn--small {
   padding: var(--space-sm) var(--space-lg);
   font-size: var(--text-sm);
+}
+
+/* Two-column layout for career sections */
+.career__content--columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5xl);
+  align-items: start;
+}
+
+.career__content--columns .career__info,
+.career__content--columns .career__positions {
+  width: 100%;
+}
+
+/* Remove the old spacing class since we're using grid gap now */
+.career__positions--spaced {
+  margin-top: 0;
+}
+
+/* Add spacing between thesis and job positions sections */
+.career__positions--spaced {
+  margin-top: var(--space-5xl);
 }
 
 /* ==========================================================================
@@ -3066,6 +3089,12 @@ img {
 
   .career-page__subtitle {
     font-size: var(--text-base);
+  }
+
+  /* Stack columns on mobile */
+  .career__content--columns {
+    grid-template-columns: 1fr;
+    gap: var(--space-4xl);
   }
 }
 
