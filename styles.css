@@ -1037,7 +1037,7 @@ img {
 }
 
 .sdg__number {
-  font-size: var(--text-xl);
+  font-size: var (--text-xl);
   font-weight: 700;
   color: var(--white);
 }
@@ -3174,4 +3174,68 @@ img {
   .career-page__title {
     font-size: var(--text-5xl);
   }
+}
+
+/* Form message styling */
+.form-message {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: 500;
+  z-index: calc(var(--z-modal) + 1);
+  max-width: 90%;
+  width: auto;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.3s ease-out;
+}
+
+.form-message--success {
+  background: var(--success);
+  color: var(--white);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.form-message--error {
+  background: var(--error);
+  color: var(--white);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Enhanced loading button state */
+.btn.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+  pointer-events: none;
+  position: relative;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }

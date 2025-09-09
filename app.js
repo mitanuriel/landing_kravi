@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Modal.init();
     CardFlip.init();
     initializeTabs();
+    initContactForms();
 
     console.log('Homepage initialized successfully');
 });
@@ -793,6 +794,79 @@ const Utils = {
         };
     }
 };
+
+// Contact Form Handler
+function initContactForms() {
+    const forms = document.querySelectorAll('.contact-form');
+
+    forms.forEach(form => {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            // Show loading state
+            button.textContent = 'Sending...';
+            button.classList.add('loading');
+            button.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+
+                const response = await fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Success
+                    showMessage(result.message, 'success');
+                    form.reset();
+
+                    // Close modal if it's the modal form
+                    const modal = form.closest('.modal');
+                    if (modal) {
+                        closeModal();
+                    }
+                } else {
+                    // Error
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showMessage('An error occurred. Please try again later.', 'error');
+            } finally {
+                // Reset button state
+                button.textContent = originalText;
+                button.classList.remove('loading');
+                button.disabled = false;
+            }
+        });
+    });
+}
+
+// Message display function
+function showMessage(message, type) {
+    // Remove existing messages
+    const existingMessages = document.querySelectorAll('.form-message');
+    existingMessages.forEach(msg => msg.remove());
+
+    // Create message element
+    const messageEl = document.createElement('div');
+    messageEl.className = `form-message form-message--${type}`;
+    messageEl.textContent = message;
+
+    // Insert message at the top of the page
+    document.body.insertBefore(messageEl, document.body.firstChild);
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        messageEl.remove();
+    }, 5000);
+}
 
 // Export modules for potential future use or testing
 if (typeof module !== 'undefined' && module.exports) {
