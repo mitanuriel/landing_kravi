@@ -248,6 +248,7 @@ img {
   height: 32px;
   width: auto;
   object-fit: contain;
+  filter: brightness(1.8) contrast(1.2) saturate(0.3);
 }
 
 .nav__logo-text {
@@ -1560,6 +1561,7 @@ img {
   height: 32px;
   width: auto;
   object-fit: contain;
+  filter: brightness(1.8) contrast(1.2) saturate(0.3);
 }
 
 .footer__logo {
@@ -2509,7 +2511,7 @@ img {
 .contact-page .contact-form .form__input,
 .contact-page .contact-form .form__textarea {
   width: 100%;
-  padding: var(--space-lg);
+  padding: var (--space-lg);
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-lg);
   font-size: var(--text-base);
