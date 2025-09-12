@@ -712,7 +712,8 @@ img {
   width: 120px;
   height: 120px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: var(--white) !important;
+  /* Force white background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -720,6 +721,14 @@ img {
   border: 4px solid var(--white);
   box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
   overflow: hidden;
+  padding: 2px;
+  /* Add small padding to create separation from border */
+}
+
+/* Ensure placeholder backgrounds remain gradient for members without photos */
+.team__member-image:not(:has(.team__member-photo)) {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  padding: 0;
 }
 
 .team__member-photo {
@@ -728,6 +737,9 @@ img {
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-full);
+  /* Remove any dark backgrounds and ensure consistent styling */
+  background: var(--white);
+  filter: brightness(1.1) contrast(1.05);
 }
 
 .team__member-placeholder {
@@ -867,7 +879,8 @@ img {
   width: 120px;
   height: 120px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: var(--white) !important;
+  /* Force white background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -875,6 +888,14 @@ img {
   border: 4px solid var(--white);
   box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
   overflow: hidden;
+  padding: 2px;
+  /* Add small padding to create separation from border */
+}
+
+/* Ensure placeholder backgrounds remain gradient for members without photos */
+.team__member-image:not(:has(.team__member-photo)) {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  padding: 0;
 }
 
 .team__member-photo {
@@ -883,6 +904,9 @@ img {
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-full);
+  /* Remove any dark backgrounds and ensure consistent styling */
+  background: var(--white);
+  filter: brightness(1.1) contrast(1.05);
 }
 
 .team__member-placeholder {
@@ -1141,7 +1165,8 @@ img {
   width: 120px;
   height: 120px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: var(--white) !important;
+  /* Force white background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1149,6 +1174,14 @@ img {
   border: 4px solid var(--white);
   box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
   overflow: hidden;
+  padding: 2px;
+  /* Add small padding to create separation from border */
+}
+
+/* Ensure placeholder backgrounds remain gradient for members without photos */
+.team__member-image:not(:has(.team__member-photo)) {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  padding: 0;
 }
 
 .team__member-photo {
@@ -1157,6 +1190,9 @@ img {
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-full);
+  /* Remove any dark backgrounds and ensure consistent styling */
+  background: var(--white);
+  filter: brightness(1.1) contrast(1.05);
 }
 
 .team__member-placeholder {
@@ -1302,7 +1338,7 @@ img {
 }
 
 .sdg__number {
-  font-size: var(--text-xl);
+  font-size: var (--text-xl);
   font-weight: 700;
   color: var(--white);
 }
@@ -3212,6 +3248,7 @@ img {
     opacity: 0;
     transform: translateX(-50%) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
