@@ -617,7 +617,8 @@ img {
 /* About Section */
 .about {
   padding: var(--space-5xl) 0;
-  background: var(--dark-bg); /* Changed from gray-50 to dark navy background */
+  background: var(--dark-bg);
+  /* Changed from gray-50 to dark navy background */
 }
 
 .about__content {
@@ -777,6 +778,20 @@ img {
   position: relative;
   min-width: 160px;
   /* Increased minimum width for tabs */
+  border-radius: var(--radius-lg);
+}
+
+.tab__button--active {
+  color: var(--primary);
+  font-weight: 600;
+  background: rgba(0, 188, 212, 0.08);
+  border-bottom: 2px solid transparent;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2), 0 0 40px rgba(0, 188, 212, 0.1);
+}
+
+.tab__button:hover:not(.tab__button--active) {
+  color: var(--primary);
+  background: rgba(0, 188, 212, 0.04);
 }
 
 /* Tab Content */
@@ -826,7 +841,7 @@ img {
   max-width: 300px;
   /* Increased max width for each card */
   background: rgba(255, 255, 255, 0.95);
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-xl) var (--space-lg);
   /* Adjusted padding */
   border-radius: var(--radius-xl);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -2158,7 +2173,7 @@ img {
   padding: var(--space-lg);
   background: var (--white);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
+  border: 1px solid var (--gray-200);
   transition: all var (--transition);
 }
 
@@ -2953,7 +2968,7 @@ img {
   }
 
   .advisory__member-name {
-    font-size: var(--text-lg);
+    font-size: var (--text-lg);
   }
 
   .advisory__member-description {
@@ -2995,7 +3010,7 @@ img {
   display: flex;
   align-items: center;
   gap: var(--space-3xl);
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var (--space-4xl);
   padding: var(--space-2xl);
   background: rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-xl);
