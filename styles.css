@@ -726,6 +726,39 @@ img {
 }
 
 /* ==========================================================================
+   PAGE HERO STYLES (For dedicated pages like About)
+   ========================================================================== */
+
+.page-hero {
+  padding: var(--space-5xl) 0 var(--space-3xl);
+  background: var(--dark-bg);
+  color: var(--white);
+  margin-top: 70px;
+}
+
+.page-hero__content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-hero__title {
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.page-hero__description {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
    ABOUT SECTION WITH TABS
    ========================================================================== */
 
@@ -3108,20 +3141,21 @@ img {
 
 /* Final Mobile Partners Section Optimization */
 @media (max-width: 767px) {
+
   /* Ensure Partners section title is properly spaced */
   .partners__title {
     font-size: var(--text-xl) !important;
     margin-bottom: var(--space-2xl) !important;
     padding: 0 var(--space-md) !important;
   }
-  
+
   /* Partners content container */
   .partners__content {
     padding: var(--space-lg) 0 !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
   }
-  
+
   /* Individual partner items - stack vertically on mobile */
   .partner__item,
   .partner__item--reverse {
@@ -3139,11 +3173,11 @@ img {
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .partner__item:last-child {
     margin-bottom: 0 !important;
   }
-  
+
   /* Partner logo containers */
   .partner__logo-container {
     width: 120px !important;
@@ -3157,19 +3191,19 @@ img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
     flex-shrink: 0 !important;
   }
-  
+
   .partner__logo-placeholder {
     font-size: var(--text-lg) !important;
     font-weight: 700 !important;
     color: var(--gray-500) !important;
   }
-  
+
   /* Partner information */
   .partner__info {
     width: 100% !important;
     text-align: center !important;
   }
-  
+
   .partner__title {
     font-size: var(--text-lg) !important;
     font-weight: 600 !important;
@@ -3179,7 +3213,7 @@ img {
     word-wrap: break-word !important;
     hyphens: auto !important;
   }
-  
+
   .partner__description {
     font-size: var(--text-sm) !important;
     color: var(--gray-600) !important;
