@@ -810,6 +810,28 @@ img {
   position: relative;
   min-width: 160px;
   /* Increased minimum width for tabs */
+  border-radius: var(--radius-lg);
+  margin: var(--space-sm) 0;
+  /* Add margin top and bottom for glow symmetry */
+}
+
+.tab__button:hover {
+  color: var(--primary);
+  background: rgba(0, 188, 212, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.1);
+  /* Subtle symmetric glow on hover */
+}
+
+.tab__button--active {
+  color: var(--primary);
+  background: rgba(0, 188, 212, 0.08);
+  border-bottom-color: var(--primary);
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.15);
+  /* Reduced and symmetric glow */
+  transform: translateY(-1px);
+  /* Reduced lift */
+  font-weight: 600;
 }
 
 /* Tab Content */
@@ -968,7 +990,7 @@ img {
 .partner__card:hover {
   border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .partner__logo {
@@ -1249,7 +1271,7 @@ img {
 .partner__card:hover {
   border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .partner__logo {
