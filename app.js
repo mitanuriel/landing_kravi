@@ -740,19 +740,53 @@ function initializeTabs() {
     const tabButtons = document.querySelectorAll('.tab__button');
     const tabPanels = document.querySelectorAll('.tab__panel');
 
+    // Function to switch to a specific tab
+    function switchToTab(targetTab) {
+        // Remove active class from all buttons and panels
+        tabButtons.forEach(btn => btn.classList.remove('tab__button--active'));
+        tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
+
+        // Add active class to target button and panel
+        const targetButton = document.querySelector(`[data-tab="${targetTab}"]`);
+        const targetPanel = document.getElementById(targetTab);
+        
+        if (targetButton && targetPanel) {
+            targetButton.classList.add('tab__button--active');
+            targetPanel.classList.add('tab__panel--active');
+        }
+    }
+
+    // Handle tab button clicks
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetTab = button.getAttribute('data-tab');
-
-            // Remove active class from all buttons and panels
-            tabButtons.forEach(btn => btn.classList.remove('tab__button--active'));
-            tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
-
-            // Add active class to clicked button and corresponding panel
-            button.classList.add('tab__button--active');
-            document.getElementById(targetTab).classList.add('tab__panel--active');
+            switchToTab(targetTab);
         });
     });
+
+    // Handle URL hash navigation (for dropdown links)
+    function handleHashNavigation() {
+        const hash = window.location.hash.substring(1); // Remove the # symbol
+        
+        // Map hash values to tab IDs
+        const hashToTab = {
+            'advisory-board': 'advisory-board',
+            'partners': 'partners',
+            'our-team': 'our-team'
+        };
+
+        if (hashToTab[hash]) {
+            switchToTab(hashToTab[hash]);
+        }
+    }
+
+    // Check for hash on page load
+    if (window.location.hash) {
+        handleHashNavigation();
+    }
+
+    // Listen for hash changes (when user uses back/forward buttons)
+    window.addEventListener('hashchange', handleHashNavigation);
 }
 
 /**
