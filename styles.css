@@ -3064,9 +3064,10 @@ img {
 .advisory__title {
   font-size: var(--text-2xl);
   font-weight: 600;
-  color: var (--white);
+  color: var(--primary);
   text-align: center;
   margin-bottom: var(--space-3xl);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .advisory__member {
