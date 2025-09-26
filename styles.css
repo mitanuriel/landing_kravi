@@ -3381,18 +3381,19 @@ img {
 }
 
 .partners__title {
-  font-size: var (--text-2xl);
+  font-size: var(--text-2xl);
   font-weight: 600;
-  color: var(--gray-900);
+  color: var(--primary);
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .partner__item {
   display: flex;
   align-items: center;
   gap: var(--space-3xl);
-  margin-bottom: var (--space-4xl);
+  margin-bottom: var(--space-4xl);
   padding: var(--space-2xl);
   background: rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-xl);
