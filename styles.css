@@ -1177,13 +1177,13 @@ img {
 .sdg__title {
   font-size: var (--text-lg);
   font-weight: 600;
-  color: var(--gray-900);
+  color: var (--gray-900);
   margin-bottom: var(--space-sm);
 }
 
 .sdg__text {
   font-size: var (--text-base);
-  color: var(--gray-600);
+  color: var (--gray-600);
   line-height: 1.6;
 }
 
@@ -1332,7 +1332,7 @@ img {
 
   .tab__button {
     padding: var(--space-md) var (--space-lg);
-    font-size: var(--text-base);
+    font-size: var (--text-base);
     /* Reset font size on mobile */
     min-width: 100px;
     /* Smaller min width on mobile */
@@ -1606,7 +1606,7 @@ img {
 
 .sdg__text {
   font-size: var (--text-base);
-  color: var(--gray-600);
+  color: var (--gray-600);
   line-height: 1.6;
 }
 
@@ -3453,7 +3453,7 @@ img {
   margin-bottom: var(--space-4xl);
   padding: 0;
   background: var(--dark-bg);
-  border-radius: var(--radius-xl);
+  border-radius: var (--radius-xl);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all var(--transition);
   backdrop-filter: blur(10px);
@@ -4655,6 +4655,175 @@ img {
 
   .sdg-text-section__text {
     font-size: var(--text-xl);
+  }
+}
+
+/* ==========================================================================
+   SDG GOALS WIDE BLOCK LAYOUT - SECTION-BASED DESIGN
+   ========================================================================== */
+
+/* SDG Goals Blocks Container */
+.sdg__goals-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual SDG Goal Block - Full Width Section */
+.sdg__goal-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.sdg__goal-block:last-child {
+  border-bottom: none;
+}
+
+/* Alternate background colors for visual separation */
+.sdg__goal-block:nth-child(even) {
+  background: var(--gray-50);
+}
+
+/* Content section of each block */
+.sdg__goal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-5xl) var(--space-4xl);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sdg__goal-block-title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.2;
+}
+
+.sdg__goal-block-text {
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Visual section of each block */
+.sdg__goal-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.02) 100%);
+}
+
+.sdg__goal-block-gif {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition);
+}
+
+.sdg__goal-block:hover .sdg__goal-block-gif {
+  transform: scale(1.02);
+}
+
+/* Reverse layout for alternating pattern */
+.sdg__goal-block--reverse .sdg__goal-content {
+  order: 2;
+}
+
+.sdg__goal-block--reverse .sdg__goal-visual {
+  order: 1;
+}
+
+/* Responsive design for SDG blocks */
+@media (max-width: 1024px) {
+  .sdg__goal-content {
+    padding: var(--space-4xl) var(--space-3xl);
+    max-width: 500px;
+  }
+  
+  .sdg__goal-block-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .sdg__goal-visual {
+    padding: var(--space-2xl);
+  }
+  
+  .sdg__goal-block-gif {
+    max-width: 300px;
+  }
+}
+
+/* Mobile layout - Stack vertically */
+@media (max-width: 768px) {
+  .sdg__goal-block,
+  .sdg__goal-block--reverse {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    text-align: center;
+  }
+  
+  .sdg__goal-block--reverse .sdg__goal-content,
+  .sdg__goal-block--reverse .sdg__goal-visual {
+    order: unset;
+  }
+  
+  .sdg__goal-content {
+    padding: var(--space-3xl) var(--space-lg);
+    max-width: 100%;
+  }
+  
+  .sdg__goal-visual {
+    padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+  }
+  
+  .sdg__goal-block-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .sdg__goal-block-text {
+    font-size: var(--text-base);
+  }
+  
+  .sdg__goal-block-gif {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sdg__goal-content {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .sdg__goal-visual {
+    padding: var(--space-lg) var(--space-md) var(--space-2xl);
+  }
+  
+  .sdg__goal-block-title {
+    font-size: var(--text-lg);
+  }
+  
+  .sdg__goal-block-text {
+    font-size: var(--text-sm);
+  }
+  
+  .sdg__goal-block-gif {
+    max-width: 200px;
   }
 }
 
