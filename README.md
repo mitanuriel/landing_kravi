@@ -49,7 +49,8 @@ A modern, responsive landing page for Kravi Analytics - showcasing advanced sate
     ├── Theo.png
     ├── Ulla.png
     ├── Zhankun2.png
-    └── ESA BIC.png
+    ├── ESA BIC.png
+    └── sustainability.jpg      # Photo by Unma Desai on Unsplash
 ```
 
 ## 🛠️ Technology Stack
