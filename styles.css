@@ -1134,7 +1134,7 @@ img {
   gap: var (--space-lg);
   padding: var(--space-xl);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
+  border-radius: var (--radius-lg);
   transition: all var(--transition);
 }
 
@@ -1436,7 +1436,7 @@ img {
 
 .team__member-role {
   font-size: var(--text-base);
-  color: var(--gray-600);
+  color: var (--gray-600);
 }
 
 /* Funding & Partnerships */
@@ -4687,9 +4687,9 @@ img {
   border-bottom: none;
 }
 
-/* Alternate background colors for visual separation */
+/* Remove alternating background colors - keep white throughout */
 .sdg__goal-block:nth-child(even) {
-  background: var(--gray-50);
+  background: var(--white);
 }
 
 /* Content section of each block */
