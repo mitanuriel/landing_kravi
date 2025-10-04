@@ -831,7 +831,7 @@ img {
 .tab__button {
   background: none;
   border: none;
-  padding: var(--space-lg) var(--space-3xl);
+  padding: var(--space-lg) var (--space-3xl);
   font-size: var(--text-xl);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
@@ -1161,7 +1161,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-lg);
+  border-radius: var (--radius-lg);
 }
 
 .sdg__number {
@@ -1175,14 +1175,14 @@ img {
 }
 
 .sdg__title {
-  font-size: var(--text-lg);
+  font-size: var (--text-lg);
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: var(--space-sm);
 }
 
 .sdg__text {
-  font-size: var(--text-base);
+  font-size: var (--text-base);
   color: var(--gray-600);
   line-height: 1.6;
 }
@@ -1598,7 +1598,7 @@ img {
 }
 
 .sdg__title {
-  font-size: var(--text-lg);
+  font-size: var (--text-lg);
   font-weight: 600;
   color: var (--gray-900);
   margin-bottom: var(--space-sm);
@@ -4618,3 +4618,44 @@ img {
     font-size: var (--text-2xl);
   }
 }
+
+/* SDG Text Content Section */
+.sdg-text-section {
+  padding: var(--space-5xl) 0;
+  background: var(--white);
+}
+
+.sdg-text-section__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 var(--space-lg);
+}
+
+.sdg-text-section__text {
+  font-size: var(--text-2xl);
+  color: var(--gray-900);
+  line-height: 1.4;
+  margin: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+}
+
+/* Mobile responsiveness for SDG text section */
+@media (max-width: 768px) {
+  .sdg-text-section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .sdg-text-section__content {
+    padding: 0 var(--space-md);
+  }
+
+  .sdg-text-section__text {
+    font-size: var(--text-xl);
+  }
+}
+
+/* SDG Alignment Header */
