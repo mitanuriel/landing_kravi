@@ -482,7 +482,7 @@ img {
   font-size: var(--text-xl);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
-  margin-bottom: var (--space-3xl);
+  margin-bottom: var(--space-5xl);
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -491,6 +491,7 @@ img {
   flex-direction: column;
   gap: var(--space-lg);
   align-items: flex-start;
+  margin-top: var(--space-xl);
 }
 
 .btn--hero {
@@ -1584,7 +1585,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-lg);
+  border-radius: var (--radius-lg);
 }
 
 .sdg__number {
@@ -4822,7 +4823,7 @@ img {
 
 .sdg__goal-block-text {
   font-size: var(--text-base);
-  color: var(--gray-700);
+  color: var (--gray-700);
   line-height: 1.6;
   margin: 0;
 }
