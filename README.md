@@ -51,6 +51,7 @@ A modern, responsive landing page for Kravi Analytics - showcasing advanced sate
     ├── Zhankun2.png
     ├── ESA BIC.png
     ├── meina-yin-KUE9Tm7fal0-unsplash.jpg  # Photo by Meina Yin on Unsplash
+    ├── patrick-perkins-76aKbIguu9U-unsplash.jpg  # Photo by Patrick Perkins on Unsplash
     └── sustainability.jpg      # Photo by Unma Desai on Unsplash
 ```
 
