@@ -78,6 +78,11 @@
   --transition: 150ms ease-in-out;
   --z-fixed: 1030;
   --z-modal: 1050;
+
+  /* Contact page mobile variables - isolated to prevent conflicts */
+  --contact-mobile-max-width: 90%;
+  --contact-mobile-form-padding: var(--space-lg);
+  --contact-mobile-field-height: 44px;
 }
 
 html {
@@ -880,11 +885,6 @@ img {
   transition: transform var(--transition), filter var(--transition);
 }
 
-.team__member-photo:hover {
-  transform: scale(1.1);
-  filter: brightness(1.15) contrast(1.08);
-}
-
 /* Custom styling for Vladimir's photo to make it larger and more zoomed in */
 .team__member-photo[alt="Vladimir Salnikov"] {
   transform: scale(1.3);
@@ -893,7 +893,7 @@ img {
 }
 
 .team__member-photo[alt="Vladimir Salnikov"]:hover {
-  transform: scale(1.4);
+  transform: scale(1.35);
 }
 
 .team__member-placeholder {
@@ -4616,7 +4616,7 @@ img {
     font-size: var (--text-sm) !important;
     line-height: 1.5 !important;
     text-align: center !important;
-    padding: 0 var(--space-sm) !important;
+    padding: 0 var (--space-sm) !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
@@ -4986,4 +4986,160 @@ img {
 
 .team__member-photo[alt="Vladimir Salnikov"]:hover {
   transform: scale(1.35);
+}
+
+/* ==========================================================================
+   CONTACT PAGE MOBILE-FRIENDLY LAYOUT - ISOLATED & SAFE
+   ========================================================================== */
+
+/* Mobile-friendly contact page layout - only affects contact page */
+.contact-page--mobile-friendly .contact-page__content {
+  display: block;
+  max-width: var(--contact-mobile-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.contact-page--mobile-friendly .contact-page__info {
+  display: none;
+  /* Hide contact info block for centered form layout */
+}
+
+.contact-page--mobile-friendly .contact-page__form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile-friendly form field styling */
+.contact-page--mobile-friendly .contact-form .form__group {
+  margin-bottom: var(--space-xl);
+}
+
+.contact-page--mobile-friendly .contact-form .form__input,
+.contact-page--mobile-friendly .contact-form .form__textarea,
+.contact-page--mobile-friendly .contact-form .form__select {
+  width: 100%;
+  padding: var(--contact-mobile-form-padding);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-family: inherit;
+  background: var(--gray-50);
+  transition: all var(--transition);
+  min-height: var(--contact-mobile-field-height);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.contact-page--mobile-friendly .contact-form .form__input:focus,
+.contact-page--mobile-friendly .contact-form .form__textarea:focus,
+.contact-page--mobile-friendly .contact-form .form__select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.contact-page--mobile-friendly .contact-form .form__textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.contact-page--mobile-friendly .contact-form .btn--contact {
+  width: 100%;
+  padding: var(--space-lg) var(--space-2xl);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 56px;
+  background: var(--primary);
+  color: var(--white);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.contact-page--mobile-friendly .contact-form .btn--contact:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 188, 212, 0.4);
+}
+
+/* Enhanced dropdown styling for mobile-friendly contact form */
+.contact-page--mobile-friendly .contact-form .form__select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.contact-page--mobile-friendly .contact-form .form__select:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-page--mobile-friendly .contact-form .form__select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2300bcd4' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Mobile responsive adjustments for contact form */
+@media (max-width: 768px) {
+  .contact-page--mobile-friendly .contact-page__content {
+    max-width: 95%;
+    padding: 0 var(--space-sm);
+  }
+
+  .contact-page--mobile-friendly .contact-page__form {
+    max-width: 100%;
+    padding: var(--space-2xl);
+  }
+
+  .contact-page--mobile-friendly .contact-form .form__input,
+  .contact-page--mobile-friendly .contact-form .form__textarea,
+  .contact-page--mobile-friendly .contact-form .form__select {
+    padding: var(--space-md);
+    font-size: var(--text-base);
+    min-height: var(--contact-mobile-field-height);
+  }
+
+  .contact-page--mobile-friendly .contact-form .form__textarea {
+    min-height: 100px;
+  }
+
+  .contact-page--mobile-friendly .contact-form .btn--contact {
+    font-size: var(--text-base);
+    padding: var(--space-lg);
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-page--mobile-friendly .contact-page__form {
+    padding: var(--space-lg);
+  }
+
+  .contact-page--mobile-friendly .contact-form .form__group {
+    margin-bottom: var(--space-lg);
+  }
+
+  .contact-page--mobile-friendly .contact-form .form__input,
+  .contact-page--mobile-friendly .contact-form .form__textarea,
+  .contact-page--mobile-friendly .contact-form .form__select {
+    padding: var(--space-sm) var(--space-md);
+    min-height: var(--contact-mobile-field-height);
+  }
 }
