@@ -1,6 +1,5 @@
 # Kravi Analytics Landing Page
 
-A modern, responsive landing page for Kravi Analytics - showcasing advanced satellite technology solutions with cutting-edge design and functionality.
 
 ![Kravi Analytics](https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)
 
@@ -64,18 +63,6 @@ A modern, responsive landing page for Kravi Analytics - showcasing advanced sate
 - Jest: JavaScript testing framework
 
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Git - [Download & Install Git](https://git-scm.com/downloads)
-- VS Code - [Download VS Code](https://code.visualstudio.com/) (recommended)
-- Live Server Extension - For local development server
-- Node.js - For running tests (optional)
-
-### 🔧 Local Development Setup
-
-#### Option 1: Using VS Code (Recommended)
 
 1. **Clone the repository**
    ```bash
@@ -168,18 +155,6 @@ A modern, responsive landing page for Kravi Analytics - showcasing advanced sate
 - **SMTP Setup**: Update email server configuration
 - **Form Fields**: Add/remove form inputs as needed
 
-### 4. Deployment
-
-#### GitHub Pages
-1. Push changes to main branch
-2. Enable GitHub Pages in repository settings
-3. Select source branch (main)
-4. Site will be available at `https://username.github.io/repository-name`
-
-#### Custom Domain
-1. Add `CNAME` file with your domain
-2. Configure DNS settings
-3. Enable HTTPS in GitHub Pages settings
 
 ## 🧪 Testing
 
@@ -253,25 +228,13 @@ git commit -m "Add: your descriptive commit message"
 git push origin feature/your-feature-name
 ```
 
-### 2. Code Quality
-- Follow semantic HTML structure
-- Use CSS BEM methodology for class naming
-- Write descriptive commit messages
-- Test on multiple browsers and devices
-- Validate HTML and CSS
-
-### 3. Performance Optimization
-- Optimize images (compress, use appropriate formats)
-- Minimize CSS and JavaScript for production
-- Use CDN for external resources
-- Enable browser caching
 
 ## 🔧 Configuration Files
 
 - **`package.json`**: Node.js dependencies and test scripts
 - **`jest.setup.js`**: Jest testing configuration
 - **`.gitignore`**: Files to exclude from version control
-- **`CNAME`**: Custom domain configuration (if using)
+
 
 ## 📖 Documentation
 
@@ -280,22 +243,6 @@ git push origin feature/your-feature-name
 - **`USER_STORIES.md`**: User requirements and acceptance criteria
 - **`todo-002.md`**: Development tasks and improvements
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and ensure they pass
-5. Submit a pull request with detailed description
-
-## 📞 Support
-
-For questions or support:
-- **Email**: info@kravianalytics.com
-- **LinkedIn**: [Kravi Analytics](https://www.linkedin.com/company/kravi-analytics)
-- **Issues**: Create an issue in the GitHub repository
-
----
 
 © 2025 Kravi Analytics. All rights reserved.
 
