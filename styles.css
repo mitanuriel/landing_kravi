@@ -868,21 +868,32 @@ img {
   /* Add small padding to create separation from border */
 }
 
-/* Ensure placeholder backgrounds remain gradient for members without photos */
-.team__member-image:not(:has(.team__member-photo)) {
-  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-  padding: 0;
-}
-
+/* General hover effect for all team member photos */
 .team__member-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-full);
-  /* Remove any dark backgrounds and ensure consistent styling */
   background: var(--white);
   filter: brightness(1.1) contrast(1.05);
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.team__member-photo:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15) contrast(1.08);
+}
+
+/* Custom styling for Vladimir's photo to make it larger and more zoomed in */
+.team__member-photo[alt="Vladimir Salnikov"] {
+  transform: scale(1.3);
+  object-position: center 20%;
+  transition: transform var(--transition), object-position var(--transition);
+}
+
+.team__member-photo[alt="Vladimir Salnikov"]:hover {
+  transform: scale(1.4);
 }
 
 .team__member-placeholder {
@@ -1019,7 +1030,7 @@ img {
   /* Adjusted padding */
   border-radius: var(--radius-xl);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all var(--transition);
+  transition: all var (--transition);
   backdrop-filter: blur(10px);
 }
 
@@ -3802,7 +3813,7 @@ img {
 
 /* White theme career content styling */
 .career-page .career__subtitle {
-  color: var(--dark-bg);
+  color: var (--dark-bg);
 }
 
 .career-page .position__card {
@@ -4965,3 +4976,14 @@ img {
 }
 
 /* SDG Alignment Header */
+
+/* Custom styling for Vladimir's photo to make it larger and more zoomed in */
+.team__member-photo[alt="Vladimir Salnikov"] {
+  transform: scale(1.3);
+  object-position: center 20%;
+  transition: transform var(--transition), object-position var(--transition);
+}
+
+.team__member-photo[alt="Vladimir Salnikov"]:hover {
+  transform: scale(1.35);
+}
