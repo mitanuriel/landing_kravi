@@ -2973,7 +2973,7 @@ img {
    ========================================================================== */
 
 .contact-page {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-2xl) 0; /* Reduced from space-5xl to space-2xl */
   background: var(--dark-bg);
   min-height: calc(100vh - 70px);
   margin-top: 0;
@@ -2981,7 +2981,7 @@ img {
 
 .contact-page__header {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl); /* Reduced from space-4xl to space-2xl */
 }
 
 .contact-page__title {
@@ -3126,6 +3126,11 @@ img {
   padding: var(--space-sm) var(--space-lg);
   font-size: var(--text-sm);
   min-height: 40px;
+}
+
+/* Reduce spacing specifically for mobile-friendly contact layout */
+.contact-page--mobile-friendly {
+  padding: var(--space-xl) 0; /* Even less padding for mobile-friendly version */
 }
 
 /* ==========================================================================
@@ -5124,6 +5129,17 @@ img {
     font-size: var(--text-base);
     padding: var(--space-lg);
     min-height: 48px;
+  }
+}
+
+/* Desktop contact form optimization - reduce padding for less thickness */
+@media (min-width: 769px) {
+  .contact-page--mobile-friendly .contact-page__form {
+    padding: var(--space-xl) var(--space-2xl); /* Reduced from space-3xl to space-xl for top/bottom */
+  }
+  
+  .contact-page--mobile-friendly .contact-form .form__group {
+    margin-bottom: var(--space-lg); /* Reduced from space-xl to space-lg */
   }
 }
 
