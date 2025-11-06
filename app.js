@@ -1,8 +1,4 @@
-/**
- * Tech Startup Homepage JavaScript
- * Handles mobile navigation, smooth scrolling, form validation, modal, and interactions
- * Prepared for future React.js conversion
- */
+
 
 /**
  * DOM Content Loaded Event Handler
@@ -749,7 +745,7 @@ function initializeTabs() {
         // Add active class to target button and panel
         const targetButton = document.querySelector(`[data-tab="${targetTab}"]`);
         const targetPanel = document.getElementById(targetTab);
-        
+
         if (targetButton && targetPanel) {
             targetButton.classList.add('tab__button--active');
             targetPanel.classList.add('tab__panel--active');
@@ -767,7 +763,7 @@ function initializeTabs() {
     // Handle URL hash navigation (for dropdown links)
     function handleHashNavigation() {
         const hash = window.location.hash.substring(1); // Remove the # symbol
-        
+
         // Map hash values to tab IDs
         const hashToTab = {
             'advisory-board': 'advisory-board',

@@ -107,6 +107,19 @@ img {
    UTILITIES & COMPONENTS
    ========================================================================== */
 
+/* Screen reader only - visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -781,19 +794,6 @@ img {
 .testimonial__text {
   font-size: var(--text-lg);
   line-height: 1.625;
-  margin-bottom: var (--space-lg);
-  font-style: italic;
-}
-
-.testimonial__author strong {
-  display: block;
-  font-weight: 600;
-  margin-bottom: var(--space-xs);
-}
-
-.testimonial__author span {
-  opacity: 0.8;
-  font-size: var(--text-sm);
 }
 
 /* About Section */
@@ -1127,7 +1127,7 @@ img {
 .partner__item {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: var (--space-xl);
   margin-bottom: var(--space-4xl);
   padding: 0;
   background: var(--dark-bg);
