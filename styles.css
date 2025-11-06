@@ -3139,7 +3139,8 @@ img {
    ========================================================================== */
 
 .contact-page {
-  padding: var(--space-2xl) 0; /* Reduced from space-5xl to space-2xl */
+  padding: var(--space-2xl) 0;
+  /* Reduced from space-5xl to space-2xl */
   background: var(--dark-bg);
   min-height: calc(100vh - 70px);
   margin-top: 0;
@@ -3147,7 +3148,8 @@ img {
 
 .contact-page__header {
   text-align: center;
-  margin-bottom: var(--space-2xl); /* Reduced from space-4xl to space-2xl */
+  margin-bottom: var(--space-2xl);
+  /* Reduced from space-4xl to space-2xl */
 }
 
 .contact-page__title {
@@ -3296,7 +3298,8 @@ img {
 
 /* Reduce spacing specifically for mobile-friendly contact layout */
 .contact-page--mobile-friendly {
-  padding: var(--space-xl) 0; /* Even less padding for mobile-friendly version */
+  padding: var(--space-xl) 0;
+  /* Even less padding for mobile-friendly version */
 }
 
 /* ==========================================================================
@@ -5301,11 +5304,13 @@ img {
 /* Desktop contact form optimization - reduce padding for less thickness */
 @media (min-width: 769px) {
   .contact-page--mobile-friendly .contact-page__form {
-    padding: var(--space-xl) var(--space-2xl); /* Reduced from space-3xl to space-xl for top/bottom */
+    padding: var(--space-xl) var(--space-2xl);
+    /* Reduced from space-3xl to space-xl for top/bottom */
   }
-  
+
   .contact-page--mobile-friendly .contact-form .form__group {
-    margin-bottom: var(--space-lg); /* Reduced from space-xl to space-lg */
+    margin-bottom: var(--space-lg);
+    /* Reduced from space-xl to space-lg */
   }
 }
 
