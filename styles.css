@@ -83,6 +83,12 @@
   --contact-mobile-max-width: 90%;
   --contact-mobile-form-padding: var(--space-lg);
   --contact-mobile-field-height: 44px;
+
+  /* Job listings horizontal layout variables */
+  --job-card-max-width: 450px;
+  --job-card-min-height: 320px;
+  --job-description-lines: 5;
+  --job-grid-gap: var(--space-xl);
 }
 
 html {
@@ -1400,7 +1406,7 @@ img {
 @media (max-width: 1200px) {
   .sdg__goals {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
+    gap: var (--space-lg);
   }
 
   .sdg__goal-image {
@@ -2601,7 +2607,7 @@ img {
 .position__card {
   background: var (--white);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-xl);
+  border-radius: var (--radius-xl);
   padding: var(--space-2xl);
   transition: all var (--transition);
 }
@@ -5077,7 +5083,7 @@ img {
   }
 
   .sdg__goal-block-title {
-    font-size: var(--text-xl);
+    font-size: var (--text-xl);
   }
 
   .sdg__goal-visual {
@@ -5328,5 +5334,140 @@ img {
   .contact-page--mobile-friendly .contact-form .form__select {
     padding: var(--space-sm) var(--space-md);
     min-height: var(--contact-mobile-field-height);
+  }
+}
+
+/* ==========================================================================
+   HORIZONTAL JOB LISTINGS - SPECIFIC TO JOB POSITIONS ONLY
+   ========================================================================== */
+
+/* Target only the job positions section (second column) for horizontal layout */
+.career__positions .positions__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--job-grid-gap);
+  align-items: start;
+}
+
+/* Job position cards with controlled height and truncated content */
+.career__positions .position__card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var (--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: var(--job-card-max-width);
+  min-height: var(--job-card-min-height);
+  height: 100%;
+}
+
+.career__positions .position__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+/* Job title styling */
+.career__positions .position__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+/* Job details (location, type) styling */
+.career__positions .position__details {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.career__positions .position__location,
+.career__positions .position__type {
+  font-size: var(--text-xs);
+  color: var(--gray-600);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--gray-100);
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+/* Truncated job description */
+.career__positions .position__description {
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--job-description-lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--text-base);
+}
+
+/* Hide any bullet points, lists, or detailed sections in job previews */
+.career__positions .position__card ul,
+.career__positions .position__card ol,
+.career__positions .position__card li,
+.career__positions .position__card h5,
+.career__positions .position__card h6,
+.career__positions .position__card strong {
+  display: none;
+}
+
+/* View Details button styling */
+.career__positions .btn--small {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  align-self: flex-start;
+  margin-top: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Keep thesis listings in original vertical layout */
+.career__info .positions__list {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+.career__info .position__card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  transition: all var(--transition);
+}
+
+.career__info .position__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+/* Mobile responsiveness for horizontal job listings */
+@media (max-width: 768px) {
+  .career__positions .positions__list {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .career__positions .position__card {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .career__positions .position__description {
+    -webkit-line-clamp: 4;
+    font-size: var(--text-base);
   }
 }
